@@ -17,7 +17,7 @@ function App() {
 
     try {
       // עדכני את הכתובת לכתובת של השרת שלך ב-Render
-      const res = await fetch("https://server-qvpv.onrender.com/upload", {
+      const res = await fetch("https://server-qvpv.onrender.com", {
         method: "POST",
         body: formData,
       });
