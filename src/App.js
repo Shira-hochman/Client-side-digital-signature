@@ -16,10 +16,12 @@ function App() {
     formData.append("file", file);
 
     try {
-      const res = await fetch("http://localhost:5000/upload", {
-        method: "POST",
-        body: formData,
-      });
+      // עדכני את הכתובת לכתובת של השרת שלך ב-Render
+ const res = await fetch("https://server-qvpv.onrender.com/upload", {
+  method: "POST",
+  body: formData,
+});
+
 
       if (!res.ok) throw new Error("שגיאה בהעלאת הקובץ");
 
