@@ -17,11 +17,10 @@ function App() {
 
     try {
       // עדכני את הכתובת לכתובת של השרת שלך ב-Render
- const res = await fetch("https://server-qvpv.onrender.com/upload", {
-  method: "POST",
-  body: formData,
-});
-
+      const res = await fetch("https://server-qvpv.onrender.com/upload", {
+        method: "POST",
+        body: formData,
+      });
 
       if (!res.ok) throw new Error("שגיאה בהעלאת הקובץ");
 

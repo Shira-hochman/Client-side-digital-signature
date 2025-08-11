@@ -5,11 +5,11 @@ import './App.css';
 function SignPage() {
   const { fileId } = useParams();
   const [signerName, setSignerName] = useState('');
-  const [fileUrl, setFileUrl] = 
-  useState('');
+  const [fileUrl, setFileUrl] = useState('');
 
   useEffect(() => {
-    setFileUrl(`http://localhost:5000/file/${fileId}`);
+    // עדכני את הכתובת כך שתפנה לשרת ב-Render
+    setFileUrl(`https://server-qvpv.onrender.com/file/${fileId}`);
   }, [fileId]);
 
   const handleSign = async () => {
@@ -19,7 +19,8 @@ function SignPage() {
     }
 
     try {
-      const res = await fetch(`http://localhost:5000/sign/${fileId}`, {
+      // עדכני את הכתובת כך שתפנה לשרת ב-Render
+      const res = await fetch(`https://server-qvpv.onrender.com/sign/${fileId}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ signerName }),
