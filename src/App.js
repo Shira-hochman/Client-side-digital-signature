@@ -16,7 +16,7 @@ function App() {
     formData.append("file", file);
 
     try {
-      // עדכני את הכתובת לכתובת של השרת שלך ב-Render
+      // עדכנתי את הכתובת לכתובת השרת ב-Render עם ה-endpoint הנכון
       const res = await fetch("https://server-qvpv.onrender.com/upload", {
         method: "POST",
         body: formData,

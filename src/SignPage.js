@@ -8,7 +8,7 @@ function SignPage() {
   const [fileUrl, setFileUrl] = useState('');
 
   useEffect(() => {
-    // עדכני את הכתובת כך שתפנה לשרת ב-Render
+    // עדכנתי את הכתובת כך שתפנה לשרת ב-Render עם ה-endpoint הנכון
     setFileUrl(`https://server-qvpv.onrender.com/file/${fileId}`);
   }, [fileId]);
 
@@ -19,7 +19,7 @@ function SignPage() {
     }
 
     try {
-      // עדכני את הכתובת כך שתפנה לשרת ב-Render
+      // עדכנתי את הכתובת כך שתפנה לשרת ב-Render עם ה-endpoint הנכון
       const res = await fetch(`https://server-qvpv.onrender.com/sign/${fileId}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
