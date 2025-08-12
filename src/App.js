@@ -1,57 +1,57 @@
 import React, { useState } from 'react';
 
 function App() {
-  const [file, setFile] = useState(null);
-  const [link, setLink] = useState('');
+  const [file, setFile] = useState(null);
+  const [link, setLink] = useState('');
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    if (!file) {
-      alert("אנא בחר קובץ");
-      return;
-    }
+    if (!file) {
+      alert("אנא בחר קובץ");
+      return;
+    }
 
-    const formData = new FormData();
-    formData.append("file", file);
+    const formData = new FormData();
+    formData.append("file", file);
 
-    try {
-      // עדכני את הכתובת לכתובת של השרת שלך ב-Render
-      const res = await fetch("https://server-qvpv.onrender.com", {
-        method: "POST",
-        body: formData,
-      });
+    try {
+      // עדכני את הכתובת לכתובת של השרת שלך ב-Render
+      const res = await fetch("https://server-qvpv.onrender.com/upload", {
+        method: "POST",
+        body: formData,
+      });
 
-      if (!res.ok) throw new Error("שגיאה בהעלאת הקובץ");
+      if (!res.ok) throw new Error("שגיאה בהעלאת הקובץ");
 
-      const data = await res.json();
-      setLink(data.shareLink);
-    } catch (error) {
-      alert("אירעה שגיאה בהעלאת הקובץ, נסה שוב");
-      console.error(error);
-    }
-  };
+      const data = await res.json();
+      setLink(data.shareLink);
+    } catch (error) {
+      alert("אירעה שגיאה בהעלאת הקובץ, נסה שוב");
+      console.error(error);
+    }
+  };
 
-  return (
-    <div style={{ padding: '20px' }}>
-      <h1>העלאת מסמך וורד לחתימה</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="file"
-          accept=".doc,.docx"
-          onChange={(e) => setFile(e.target.files[0])}
-        />
-        <button type="submit">שלח</button>
-      </form>
+  return (
+    <div style={{ padding: '20px' }}>
+      <h1>העלאת מסמך וורד לחתימה</h1>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="file"
+          accept=".doc,.docx"
+          onChange={(e) => setFile(e.target.files[0])}
+        />
+        <button type="submit">שלח</button>
+      </form>
 
-      {link && (
-        <div style={{ marginTop: '20px' }}>
-          <p>המסמך הועלה! ניתן לשתף את הקישור:</p>
-          <a href={link} target="_blank" rel="noreferrer">{link}</a>
-        </div>
-      )}
-    </div>
-  );
+      {link && (
+        <div style={{ marginTop: '20px' }}>
+          <p>המסמך הועלה! ניתן לשתף את הקישור:</p>
+          <a href={link} target="_blank" rel="noreferrer">{link}</a>
+        </div>
+      )}
+    </div>
+  );
 }
 
 export default App;
